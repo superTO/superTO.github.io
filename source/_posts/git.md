@@ -12,7 +12,7 @@ tags: git
 ## 講解 HEAD -> source 和 origin/source 意思
 
 - 當使用 git commit 後 local 會多一個 commit, 如下圖 HEAD -> source 位置變更了
-- 接著當使用 git push 會將 local 的 commit 推送到 origin/source 另 origin/source 和 local 同步
+- 接著當使用 git push 會將 local 的 commit 推送到 origin/source 讓 origin/source 和 local 同步
 ![git log - git commit 後](2021-10-19image2.png)
 
 - origin/source 指的是該 branch 最後一次和 origin 同步的 commit 所在的位置
