@@ -20,15 +20,25 @@
     var CONFIG = {"hostname":"superto.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
   </script>
 
-  <meta property="og:type" content="website">
-<meta property="og:title" content="Adokun notes">
-<meta property="og:url" content="https://superto.github.io/tags/Typescript/index.html">
+  <meta name="description" content="簡單判斷git能力 能看懂 git log 內容 知道 HEAD -&gt; source 和 origin&#x2F;source 意思 知道 origin 如何產生  講解 HEAD -&gt; source 和 origin&#x2F;source 意思 當使用 git commit 後 local 會多一個 commit, 如下圖 HEAD -&gt; source 位置變更了  接著當使用 git push">
+<meta property="og:type" content="article">
+<meta property="og:title" content="git">
+<meta property="og:url" content="https://superto.github.io/2021/10/19/git/index.html">
 <meta property="og:site_name" content="Adokun notes">
+<meta property="og:description" content="簡單判斷git能力 能看懂 git log 內容 知道 HEAD -&gt; source 和 origin&#x2F;source 意思 知道 origin 如何產生  講解 HEAD -&gt; source 和 origin&#x2F;source 意思 當使用 git commit 後 local 會多一個 commit, 如下圖 HEAD -&gt; source 位置變更了  接著當使用 git push">
 <meta property="og:locale" content="zh_TW">
+<meta property="og:image" content="https://superto.github.io/2021/10/19/git/2021-10-19image.png">
+<meta property="og:image" content="https://superto.github.io/2021/10/19/git/2021-10-19image2.png">
+<meta property="og:image" content="https://superto.github.io/2021/10/19/git/2021-10-19image3.png">
+<meta property="og:image" content="https://superto.github.io/2021/10/19/git/2021-10-19image4.png">
+<meta property="article:published_time" content="2021-10-19T12:28:36.000Z">
+<meta property="article:modified_time" content="2021-10-19T13:01:35.915Z">
 <meta property="article:author" content="Adokun(superTO)">
+<meta property="article:tag" content="git">
 <meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://superto.github.io/2021/10/19/git/2021-10-19image.png">
 
-<link rel="canonical" href="https://superto.github.io/tags/Typescript/">
+<link rel="canonical" href="https://superto.github.io/2021/10/19/git/">
 
 
 <script id="page-configurations">
@@ -36,12 +46,12 @@
   CONFIG.page = {
     sidebar: "",
     isHome : false,
-    isPost : false,
+    isPost : true,
     lang   : 'zh-TW'
   };
 </script>
 
-  <title>標籤: Typescript | Adokun notes</title>
+  <title>git | Adokun notes</title>
   
 
 
@@ -139,51 +149,104 @@
         <div class="content-wrap">
           
 
-          <div class="content tag">
+          <div class="content post posts-expand">
             
 
+    
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h2 class="collection-header">Typescript
-          <small>標籤</small>
-        </h2>
-      </div>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://superto.github.io/2021/10/19/git/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Adokun(superTO)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Adokun notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          git
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2021-10-19 20:28:36 / 修改時間：21:01:35" itemprop="dateCreated datePublished" datetime="2021-10-19T20:28:36+08:00">2021-10-19</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <span class="collection-header">2021</span>
+        <h2 id="簡單判斷git能力"><a href="#簡單判斷git能力" class="headerlink" title="簡單判斷git能力"></a>簡單判斷git能力</h2><ol>
+<li>能看懂 git log 內容<br><img src="/2021/10/19/git/2021-10-19image.png" alt="git log"></li>
+<li>知道 HEAD -&gt; source 和 origin/source 意思</li>
+<li>知道 origin 如何產生</li>
+</ol>
+<h2 id="講解-HEAD-gt-source-和-origin-source-意思"><a href="#講解-HEAD-gt-source-和-origin-source-意思" class="headerlink" title="講解 HEAD -&gt; source 和 origin/source 意思"></a>講解 HEAD -&gt; source 和 origin/source 意思</h2><ul>
+<li><p>當使用 git commit 後 local 會多一個 commit, 如下圖 HEAD -&gt; source 位置變更了</p>
+</li>
+<li><p>接著當使用 git push 會將 local 的 commit 推送到 origin/source 另 origin/source 和 local 同步<br><img src="/2021/10/19/git/2021-10-19image2.png" alt="git log - git commit 後"></p>
+</li>
+<li><p>origin/source 指的是該 branch 最後一次和 origin 同步的 commit 所在的位置</p>
+</li>
+</ul>
+<h2 id="講解-origin-如何產生"><a href="#講解-origin-如何產生" class="headerlink" title="講解 origin 如何產生"></a>講解 origin 如何產生</h2><ul>
+<li>可以使用 git remote -v 可以看到<br><img src="/2021/10/19/git/2021-10-19image3.png" alt="git remote -v"></li>
+<li>這樣就可以知道「git push origin main」的意思了</li>
+</ul>
+<h2 id="補充-git-remote-add"><a href="#補充-git-remote-add" class="headerlink" title="補充 git remote add"></a>補充 git remote add</h2><ul>
+<li><p>執行下列指令後 git remote -v 的變化</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream git@github.com:superTO/Leetcode.git</span><br></pre></td></tr></table></figure>
+<p><img src="/2021/10/19/git/2021-10-19image4.png" alt="git remote -v - git remote add upstream git@github.com:superTO/Leetcode.git 後"></p>
+</li>
+<li><p>之後使用「git pull upstream master」就可以直接對 <a href="mailto:&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;">&#x67;&#x69;&#116;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#46;&#99;&#111;&#109;</a>:superTO/Leetcode.git 的 master 這條 branch 執行 fetch + merge</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">這個方法在 fork 專案後, 如果版本落差太大會使用到</span><br></pre></td></tr></table></figure></li>
+</ul>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2021-10-18T23:32:39+08:00"
-              content="2021-10-18">
-          10-18
-        </time>
-      </div>
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/git/" rel="tag"># git</a>
+          </div>
 
-      <div class="post-title">
-          <a class="post-title-link" href="/2021/10/18/typescript-typeGuard/" itemprop="url">
-            <span itemprop="name">Typescript - Type Guard</span>
-          </a>
-      </div>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/10/19/Figma/" rel="prev" title="Figma">
+      <i class="fa fa-chevron-left"></i> Figma
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
   </article>
-
-    </div>
-  </div>
   
   
-  
-
   
 
 
@@ -236,6 +299,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E7%B0%A1%E5%96%AE%E5%88%A4%E6%96%B7git%E8%83%BD%E5%8A%9B"><span class="nav-number">1.</span> <span class="nav-text">簡單判斷git能力</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AC%9B%E8%A7%A3-HEAD-gt-source-%E5%92%8C-origin-source-%E6%84%8F%E6%80%9D"><span class="nav-number">2.</span> <span class="nav-text">講解 HEAD -&gt; source 和 origin&#x2F;source 意思</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%AC%9B%E8%A7%A3-origin-%E5%A6%82%E4%BD%95%E7%94%A2%E7%94%9F"><span class="nav-number">3.</span> <span class="nav-text">講解 origin 如何產生</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E8%A3%9C%E5%85%85-git-remote-add"><span class="nav-number">4.</span> <span class="nav-text">補充 git remote add</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
