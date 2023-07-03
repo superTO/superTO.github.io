@@ -2,6 +2,7 @@
 title: DigiCurrency notes
 date: 2021-10-06 20:01:39
 tags: DigiCurrency
+categories: 
 ---
 
 ### 出入金流程

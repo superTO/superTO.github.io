@@ -2,6 +2,7 @@
 title: hexo 建立 blog
 date: 2021-09-15 22:26:21
 tags:
+categories: 
 ---
 # Hexo 建立 blog
 
