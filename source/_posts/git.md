@@ -1,7 +1,8 @@
 ---
 title: git
 date: 2021-10-19 20:28:36
-tags: git
+tags:
+- git
 categories: 
 ---
 ## 簡單判斷git能力

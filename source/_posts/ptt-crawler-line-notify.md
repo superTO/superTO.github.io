@@ -1,7 +1,10 @@
 ---
 title: ptt-crawler-line-notify
 date: 2024-05-21 18:14:16
-tags:
+tags: 
+- LINE Notify
+- ptt crawler
+- GitHub Actions
 categories:  
 ---
 # 用 Line notify 傳遞 ptt 爬蟲資料
