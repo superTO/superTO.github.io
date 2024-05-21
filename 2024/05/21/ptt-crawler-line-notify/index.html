@@ -1,0 +1,428 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"superto.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="用 Line notify 傳遞 ptt 爬蟲資料github 原定流程github action 執行爬蟲程式 &#x3D;&gt; github action 觸發 Line notify  爬蟲程式 github action   在github action 時, 載入data.js 檔案(設定成secrets) line notify 顯示問題 \n換行 Environment variables">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ptt-crawler-line-notify">
+<meta property="og:url" content="https://superto.github.io/2024/05/21/ptt-crawler-line-notify/index.html">
+<meta property="og:site_name" content="Adokun notes">
+<meta property="og:description" content="用 Line notify 傳遞 ptt 爬蟲資料github 原定流程github action 執行爬蟲程式 &#x3D;&gt; github action 觸發 Line notify  爬蟲程式 github action   在github action 時, 載入data.js 檔案(設定成secrets) line notify 顯示問題 \n換行 Environment variables">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2024-05-21T10:14:16.000Z">
+<meta property="article:modified_time" content="2024-05-21T14:22:35.528Z">
+<meta property="article:author" content="Adokun(superTO)">
+<meta property="article:tag" content="LINE Notify">
+<meta property="article:tag" content="ptt crawler">
+<meta property="article:tag" content="GitHub Actions">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://superto.github.io/2024/05/21/ptt-crawler-line-notify/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>ptt-crawler-line-notify | Adokun notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Adokun notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://superto.github.io/2024/05/21/ptt-crawler-line-notify/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Adokun(superTO)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Adokun notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          ptt-crawler-line-notify
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2024-05-21 18:14:16 / 修改時間：22:22:35" itemprop="dateCreated datePublished" datetime="2024-05-21T18:14:16+08:00">2024-05-21</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h1 id="用-Line-notify-傳遞-ptt-爬蟲資料"><a href="#用-Line-notify-傳遞-ptt-爬蟲資料" class="headerlink" title="用 Line notify 傳遞 ptt 爬蟲資料"></a>用 Line notify 傳遞 ptt 爬蟲資料</h1><p><a target="_blank" rel="noopener" href="https://github.com/superTO/ptt-crawler-schedule">github</a></p>
+<h2 id="原定流程"><a href="#原定流程" class="headerlink" title="原定流程"></a>原定流程</h2><p>github action 執行爬蟲程式 =&gt; github action 觸發 Line notify</p>
+<ol>
+<li>爬蟲程式</li>
+<li>github action</li>
+</ol>
+<ul>
+<li>在github action 時, 載入data.js 檔案(設定成secrets)</li>
+<li>line notify 顯示問題 \n換行</li>
+<li>Environment variables 在這邊設定要爬的內容&amp;回傳訊息</li>
+</ul>
+<ol start="3">
+<li>line notify 通知</li>
+</ol>
+<h2 id="遇到的問題"><a href="#遇到的問題" class="headerlink" title="遇到的問題"></a>遇到的問題</h2><ol>
+<li>github action 如果使用 schedule: 無法設定觸發的 branch<ul>
+<li>只能直接綁定執行的branch<ul>
+<li>但會導致 workflow_dispatch: 選擇branch觸發無效</li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+<p>:::warning<br><strong>沒有解決</strong><br>schedule: 使用 default branch 觸發, 就改用 default branch 版本控制<br>:::<br>2. 無法將 node index.js 回傳的資料, 直接透過 github action 傳遞參數給 line notify</p>
+<p>:::success<br><strong>解決</strong><br>改用 writeFileSync 輸出 .txt, github action 透過讀檔傳遞資料<br>:::<br>3. Line notify 每次傳訊息字數上限為1000<br>    - 因為 github action forloop 執行 step 有障礙, 大改版</p>
+<p>:::success<br><strong>解決</strong><br>將 github action 精簡, 不使用 writeFileSync 輸出檔案, 改為爬蟲後呼叫Line notify API<br><a target="_blank" rel="noopener" href="https://github.com/superTO/ptt-crawler-schedule/commit/77f2cee9b9542ea2cf1d2061367be4fb81c9a557">commit</a><br>:::<br>4. Line notify 傳遞訊息時, 可能順序不對</p>
+<p>:::success<br><strong>解決</strong><br>追加 sleep()<br>:::<br>5. PTT爬蟲資料只有內文才有完整日期</p>
+<p>:::success<br><strong>未知</strong><br>原因: 追加功能 “只顯示幾天前的資料”<br>解法: 透過12&amp;1月來判斷年分<br><a target="_blank" rel="noopener" href="https://github.com/superTO/ptt-crawler-schedule/commit/96789b16304d11979e6feff4bf4b2cdc308dcee8">commit</a><br>:::</p>
+<h2 id="最終流程"><a href="#最終流程" class="headerlink" title="最終流程"></a>最終流程</h2><ol>
+<li>github action 只用來建立執行環境 &amp; 執行</li>
+</ol>
+<p>forloop<br>2. 爬蟲執行<br>3. 資料轉換<br>4. 資料過濾<br>5. 爬蟲結束<br>END forloop </p>
+<ol start="6">
+<li>line notify 傳訊息</li>
+</ol>
+<h2 id="後續可能的補充"><a href="#後續可能的補充" class="headerlink" title="後續可能的補充"></a>後續可能的補充</h2><ol>
+<li>想要把參數隱藏起來</li>
+</ol>
+<ul>
+<li>github Environment variables</li>
+</ul>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/LINE-Notify/" rel="tag"># LINE Notify</a>
+              <a href="/tags/ptt-crawler/" rel="tag"># ptt crawler</a>
+              <a href="/tags/GitHub-Actions/" rel="tag"># GitHub Actions</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2023/07/03/2023-7-3-blind-tasting/" rel="prev" title="2023-7-3-blind-tasting">
+      <i class="fa fa-chevron-left"></i> 2023-7-3-blind-tasting
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#%E7%94%A8-Line-notify-%E5%82%B3%E9%81%9E-ptt-%E7%88%AC%E8%9F%B2%E8%B3%87%E6%96%99"><span class="nav-number">1.</span> <span class="nav-text">用 Line notify 傳遞 ptt 爬蟲資料</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%8E%9F%E5%AE%9A%E6%B5%81%E7%A8%8B"><span class="nav-number">1.1.</span> <span class="nav-text">原定流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E9%81%87%E5%88%B0%E7%9A%84%E5%95%8F%E9%A1%8C"><span class="nav-number">1.2.</span> <span class="nav-text">遇到的問題</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E6%9C%80%E7%B5%82%E6%B5%81%E7%A8%8B"><span class="nav-number">1.3.</span> <span class="nav-text">最終流程</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#%E5%BE%8C%E7%BA%8C%E5%8F%AF%E8%83%BD%E7%9A%84%E8%A3%9C%E5%85%85"><span class="nav-number">1.4.</span> <span class="nav-text">後續可能的補充</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Adokun(superTO)</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Adokun(superTO)</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>

@@ -1,0 +1,476 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 5.4.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon-next.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32-next.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16-next.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"superto.github.io","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":false,"trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="出入金流程 入金 (以BitoPro -&gt; 派網為例)   開通台灣交易所帳號(需要身分認證)、派網帳號 錢包 -&gt; 加值 掛單購買USDT 確認BitoPro錢包有USDT 開啟派網 -&gt; 充幣 -&gt; 選擇「USDT」 -&gt; 基於哪個鏈選擇「TRC20」-&gt; 複製USDT(TRC20)地址 錢包 -&gt; 提領 -&gt; 幣別選擇「USDT」 -&gt;">
+<meta property="og:type" content="article">
+<meta property="og:title" content="DigiCurrency notes">
+<meta property="og:url" content="https://superto.github.io/2021/10/06/DigiCurrency-notes/index.html">
+<meta property="og:site_name" content="Adokun notes">
+<meta property="og:description" content="出入金流程 入金 (以BitoPro -&gt; 派網為例)   開通台灣交易所帳號(需要身分認證)、派網帳號 錢包 -&gt; 加值 掛單購買USDT 確認BitoPro錢包有USDT 開啟派網 -&gt; 充幣 -&gt; 選擇「USDT」 -&gt; 基於哪個鏈選擇「TRC20」-&gt; 複製USDT(TRC20)地址 錢包 -&gt; 提領 -&gt; 幣別選擇「USDT」 -&gt;">
+<meta property="og:locale" content="zh_TW">
+<meta property="article:published_time" content="2021-10-06T12:01:39.000Z">
+<meta property="article:modified_time" content="2024-05-21T14:24:58.231Z">
+<meta property="article:author" content="Adokun(superTO)">
+<meta property="article:tag" content="DigiCurrency">
+<meta name="twitter:card" content="summary">
+
+<link rel="canonical" href="https://superto.github.io/2021/10/06/DigiCurrency-notes/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-TW'
+  };
+</script>
+
+  <title>DigiCurrency notes | Adokun notes</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切換導航欄">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Adokun notes</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首頁</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>歸檔</a>
+
+  </li>
+  </ul>
+</nav>
+
+
+
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://superto.github.io/2021/10/06/DigiCurrency-notes/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Adokun(superTO)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Adokun notes">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          DigiCurrency notes
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+
+              <time title="創建時間：2021-10-06 20:01:39" itemprop="dateCreated datePublished" datetime="2021-10-06T20:01:39+08:00">2021-10-06</time>
+            </span>
+              <span class="post-meta-item">
+                <span class="post-meta-item-icon">
+                  <i class="far fa-calendar-check"></i>
+                </span>
+                <span class="post-meta-item-text">更新於</span>
+                <time title="修改時間：2024-05-21 22:24:58" itemprop="dateModified" datetime="2024-05-21T22:24:58+08:00">2024-05-21</time>
+              </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <h3 id="出入金流程"><a href="#出入金流程" class="headerlink" title="出入金流程"></a>出入金流程</h3><ul>
+<li>入金 (以BitoPro -&gt; 派網為例)</li>
+</ul>
+<ol>
+<li>開通台灣交易所帳號(需要身分認證)、派網帳號</li>
+<li>錢包 -&gt; 加值</li>
+<li>掛單購買USDT</li>
+<li>確認BitoPro錢包有USDT</li>
+<li>開啟派網 -&gt; 充幣 -&gt; 選擇「USDT」 -&gt; 基於哪個鏈選擇「TRC20」-&gt; 複製USDT(TRC20)地址</li>
+<li>錢包 -&gt; 提領 -&gt; 幣別選擇「USDT」 -&gt; 錢包類型選擇「TRX-TRC20」 -&gt; 提領到「貼上剛剛派網複製的地址」 -&gt; 點選「提領」</li>
+<li>等待(10分鐘內), 金額不會馬上轉過去</li>
+</ol>
+<h3 id="台灣交易所-台幣-換-USDT"><a href="#台灣交易所-台幣-換-USDT" class="headerlink" title="台灣交易所(台幣 換 USDT)"></a>台灣交易所(台幣 換 USDT)</h3><ol>
+<li>Bitopro (深度夠)<ul>
+<li>BitoDebt 那個債不要買，報酬太低還要搶。喜歡買債的話，Ace 交易所的債，利率好一些，記住這些債都要打八折報酬，因為他們收20%手續費沒寫在外面</li>
+</ul>
+</li>
+<li>ACE王牌交易所(政府互動最頻繁)</li>
+<li>MAX </li>
+</ol>
+<ul>
+<li>bito max ace 這三個是台灣的交易所</li>
+<li>前期要把台幣變虛擬幣，這是必要的地方，真實身分認證有點花時間，建議先挑一個做好驗證</li>
+</ul>
+<p>大筆資金請用美元電匯 FTX</p>
+<ul>
+<li>FTX到帳金額要1萬美才不會收手續費</li>
+</ul>
+<h3 id="入金"><a href="#入金" class="headerlink" title="入金"></a>入金</h3><p><a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/DigiCurrency/M.1622885320.A.C43.html">流程/手續費計算</a></p>
+<h3 id="個人判斷"><a href="#個人判斷" class="headerlink" title="個人判斷"></a>個人判斷</h3><p>適合投資的項目:</p>
+<p>主流幣(ex: BTC, ETH) -&gt; 網格機器人<br>有潛力的幣(ex: DOT, FIL) -&gt; 屯幣寶</p>
+<h3 id="期限套利"><a href="#期限套利" class="headerlink" title="期限套利"></a>期限套利</h3><ul>
+<li>資金費率0.01% - 約年化7%報酬率</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://danielting.medium.com/%E6%B4%BE%E7%B6%B2%E6%9C%9F%E7%8F%BE%E5%A5%97%E5%88%A9%E5%B7%A5%E5%85%B7%E4%BB%8B%E7%B4%B9-%E4%BD%8E%E9%A2%A8%E9%9A%AA%E6%8A%95%E8%B3%87%E5%B7%A5%E5%85%B7%E5%B9%B4%E5%88%A9%E7%8E%87%E7%B4%8410-50-c950a8d88f73">套利機器人設定</a></p>
+<h3 id="網格機器人"><a href="#網格機器人" class="headerlink" title="網格機器人"></a>網格機器人</h3><ul>
+<li>錢不夠多就減少網格數量不要修改上下限</li>
+</ul>
+<p><a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/DigiCurrency/M.1613228631.A.772.html">天地單設定</a></p>
+<ul>
+<li><p>等比就是穩定輸出</p>
+</li>
+<li><p>等差如果漲上去 會賺比較多</p>
+</li>
+<li><p><a target="_blank" rel="noopener" href="https://www.youtube.com/watch?v=xCN248Xxbo0">網格區間設定</a></p>
+</li>
+<li><p>每隔利潤設高一點, 幣升值的時候才吃的到獲利</p>
+<ul>
+<li>派網網格每隔利潤</li>
+<li>小幣 每隔利潤最少3%</li>
+<li>主流幣 1~3%<h3 id="屯幣寶"><a href="#屯幣寶" class="headerlink" title="屯幣寶"></a>屯幣寶</h3></li>
+</ul>
+</li>
+</ul>
+<p>派網的屯幣寶, 算是簡單持有幣的一種方式(每種幣至少100U)</p>
+<h3 id="BETH"><a href="#BETH" class="headerlink" title="BETH"></a>BETH</h3><p><a target="_blank" rel="noopener" href="https://pttdigits.com/DigiCurrency/1WgpA8l6">beth</a></p>
+<p><a target="_blank" rel="noopener" href="https://www.ptt.cc/bbs/DigiCurrency/M.1621848613.A.118.html">ETH2.0質押(詳細)</a></p>
+<h3 id="放貸"><a href="#放貸" class="headerlink" title="放貸"></a>放貸</h3><p>平台</p>
+<ol>
+<li>bitfinex</li>
+<li>crypto</li>
+</ol>
+<ul>
+<li>雖然我不知道他保險什麼，但目前保險最多的是這個，上面質押 usdt 年化有到10%也可以考慮</li>
+</ul>
+<ol start="3">
+<li>富利fuly 放貸機器人</li>
+<li>FTX<ul>
+<li>是目前新竄紅的交易所，如果你想美元入金買USDT，可以去註冊來用，這個交易所特色是他的放貸系統，不想扛風險可以把這個交易所當作定存美元的地方</li>
+</ul>
+</li>
+</ol>
+<h3 id="流動性挖礦"><a href="#流動性挖礦" class="headerlink" title="流動性挖礦"></a>流動性挖礦</h3><ul>
+<li>搜尋 MMA 造市</li>
+</ul>
+<h3 id="雜"><a href="#雜" class="headerlink" title="雜"></a>雜</h3><ol>
+<li>TRC20來做交易</li>
+<li>量化交易機器人 如果沒有開槓桿 就不如直接持有就好</li>
+<li>網格 / 期限套利(30%) 兩種交易機器人</li>
+<li>永續合約 如何和現貨掛勾 - 每8小時產生資金費率</li>
+</ol>
+<p>期貨交割是用當日收盤價(如果平倉的話)</p>
+<h3 id="比喻"><a href="#比喻" class="headerlink" title="比喻"></a>比喻</h3><p>錢錢：BTC<br>網際網路：ETH<br>硬碟：FIL<br>5G：SOL<br>收藏品：NFT<br>大學：DOt</p>
+<h3 id="推薦碼"><a href="#推薦碼" class="headerlink" title="推薦碼"></a>推薦碼</h3><p>派網 tn4hgZCa<br>幣安 237444390<br>BitoPro 2661190744</p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+          <div class="post-tags">
+              <a href="/tags/DigiCurrency/" rel="tag"># DigiCurrency</a>
+          </div>
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2021/09/15/2019-09-15-hexo-generage-blog/" rel="prev" title="hexo 建立 blog">
+      <i class="fa fa-chevron-left"></i> hexo 建立 blog
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2021/10/18/typescript-typeGuard/" rel="next" title="Typescript - Type Guard">
+      Typescript - Type Guard <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目錄
+        </li>
+        <li class="sidebar-nav-overview">
+          本站概要
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BA%E5%85%A5%E9%87%91%E6%B5%81%E7%A8%8B"><span class="nav-number">1.</span> <span class="nav-text">出入金流程</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%8F%B0%E7%81%A3%E4%BA%A4%E6%98%93%E6%89%80-%E5%8F%B0%E5%B9%A3-%E6%8F%9B-USDT"><span class="nav-number">2.</span> <span class="nav-text">台灣交易所(台幣 換 USDT)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%85%A5%E9%87%91"><span class="nav-number">3.</span> <span class="nav-text">入金</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%80%8B%E4%BA%BA%E5%88%A4%E6%96%B7"><span class="nav-number">4.</span> <span class="nav-text">個人判斷</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%9C%9F%E9%99%90%E5%A5%97%E5%88%A9"><span class="nav-number">5.</span> <span class="nav-text">期限套利</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%B6%B2%E6%A0%BC%E6%A9%9F%E5%99%A8%E4%BA%BA"><span class="nav-number">6.</span> <span class="nav-text">網格機器人</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%B1%AF%E5%B9%A3%E5%AF%B6"><span class="nav-number">7.</span> <span class="nav-text">屯幣寶</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#BETH"><span class="nav-number">8.</span> <span class="nav-text">BETH</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%94%BE%E8%B2%B8"><span class="nav-number">9.</span> <span class="nav-text">放貸</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%B5%81%E5%8B%95%E6%80%A7%E6%8C%96%E7%A4%A6"><span class="nav-number">10.</span> <span class="nav-text">流動性挖礦</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%9B%9C"><span class="nav-number">11.</span> <span class="nav-text">雜</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%AF%94%E5%96%BB"><span class="nav-number">12.</span> <span class="nav-text">比喻</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8E%A8%E8%96%A6%E7%A2%BC"><span class="nav-number">13.</span> <span class="nav-text">推薦碼</span></a></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+  <p class="site-author-name" itemprop="name">Adokun(superTO)</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">6</span>
+          <span class="site-state-item-name">文章</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+        <span class="site-state-item-count">1</span>
+        <span class="site-state-item-name">分類</span></a>
+      </div>
+      <div class="site-state-item site-state-tags">
+            <a href="/tags/">
+        <span class="site-state-item-count">8</span>
+        <span class="site-state-item-name">標籤</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 
+  <span itemprop="copyrightYear">2024</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Adokun(superTO)</span>
+</div>
+
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+
+</body>
+</html>
