@@ -74,7 +74,10 @@ END forloop
 
 6. line notify 傳訊息
 
-## 後續可能的補充
+## 後續可能的增加的功能
 
 1. 想要把參數隱藏起來
 - github Environment variables
+
+2. 將上一次重複傳的資料移除
+- 初步想法: 產生log檔案後, 建立commit push 至 github, 每次讀檔檢查內容
