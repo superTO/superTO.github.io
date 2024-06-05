@@ -1,7 +1,8 @@
 ---
 title: Typescript - Type Guard
 date: 2021-10-18 23:32:39
-tags: Typescript
+tags:
+- Typescript
 categories: 
 ---
 ## 每次都要用as強制型別轉換?

@@ -1,8 +1,10 @@
 ---
 title: 2023-7-3-blind-tasting
 date: 2023-07-03 23:31:53
-tags: blind tasting
-categories: blind tasting
+tags:
+- blind tasting
+categories:
+- wine
 ---
 ## 白酒
 
