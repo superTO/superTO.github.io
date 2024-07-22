@@ -17,6 +17,12 @@ or
 npm run deploy
 ```
 
+## how to create a new post
+
+```
+npx hexo new POSTTITLE
+```
+
 ## Hexo deploy 到 Github 後, 發現 commit 全沒了
 
 在 deploy 時的動作是

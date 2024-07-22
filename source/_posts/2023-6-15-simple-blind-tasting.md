@@ -1,8 +1,10 @@
 ---
 title: 2023-6-15-simple-blind-tasting
 date: 2023-07-03 00:01:25
-tags: blind tasting
-categories: blind tasting
+tags:
+- blind tasting
+categories:
+- wine
 ---
 # 6/15 簡單葡萄酒盲飲課程
 
