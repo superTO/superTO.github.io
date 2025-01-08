@@ -145,6 +145,99 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
+    <link itemprop="mainEntityOfPage" href="https://superto.github.io/2025/01/08/pipx/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.gif">
+      <meta itemprop="name" content="Adokun(superTO)">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Adokun notes">
+    </span>
+      <header class="post-header">
+        <h2 class="post-title" itemprop="name headline">
+          
+            <a href="/2025/01/08/pipx/" class="post-title-link" itemprop="url">pipx</a>
+        </h2>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">發表於</span>
+              
+
+              <time title="創建時間：2025-01-08 23:04:27 / 修改時間：23:48:53" itemprop="dateCreated datePublished" datetime="2025-01-08T23:04:27+08:00">2025-01-08</time>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+          <h1 id="pipx-簡單說明"><a href="#pipx-簡單說明" class="headerlink" title="pipx 簡單說明"></a>pipx 簡單說明</h1><p>原因: 在ubuntu 23.04以後, 會限制不讓你在global使用 pip install 安裝套件(需要建立虛擬環境), 會出現以下錯誤</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line">error: externally-managed-environment</span><br><span class="line"> </span><br><span class="line">_ This environment is externally managed</span><br><span class="line">_─&gt; To install Python packages system-wide, try apt install</span><br><span class="line">python3-xyz, where xyz is the package you are trying to</span><br><span class="line">install.</span><br><span class="line"> </span><br><span class="line">If you wish to install a non-Debian-packaged Python package,</span><br><span class="line">create a virtual environment using python3 -m venv path/to/venv.</span><br><span class="line">Then use path/to/venv/bin/python and path/to/venv/bin/pip. Make</span><br><span class="line">sure you have python3-full installed.</span><br><span class="line"> </span><br><span class="line">If you wish to install a non-Debian packaged Python application,</span><br><span class="line">it may be easiest to use pipx install xyz, which will manage a</span><br><span class="line">virtual environment for you. Make sure you have pipx installed.</span><br><span class="line"> </span><br><span class="line">See /usr/share/doc/python3.12/README.venv for more information.</span><br><span class="line"> </span><br><span class="line">note: If you believe this is a mistake, please contact your Python installation or OS distribution provider. You can override this, at the risk of breaking your Python installation or OS, by passing --break-system-packages.</span><br><span class="line">hint: See PEP 668 for the detailed specification.</span><br></pre></td></tr></table></figure>
+
+<p>解決辦法</p>
+<ol>
+<li><p>使用虛擬環境</p>
+<ul>
+<li>以 virtualenv 為例<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt install python3-virtualenv</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+<li><p>使用 pipx</p>
+<ul>
+<li>pipx 的介紹讓人以為可以使用 pipx install pandas <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">$ pipx install pandas</span><br><span class="line">Note: Dependent package &#x27;numpy&#x27; contains 2 apps</span><br><span class="line">  - f2py</span><br><span class="line">  - numpy-config</span><br><span class="line"></span><br><span class="line">No apps associated with package pandas. Try again with &#x27;--include-deps&#x27; to include apps of dependent packages, which are listed</span><br><span class="line">above. If you are attempting to install a library, pipx should not be used. Consider using pip or a similar tool instead.</span><br></pre></td></tr></table></figure></li>
+</ul>
+</li>
+</ol>
+<p>結果是這樣用</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">pipx install pipenv</span><br><span class="line"></span><br><span class="line">mkdir .venv</span><br><span class="line">pipx run pipenv --shell</span><br><span class="line">pip install pandas</span><br></pre></td></tr></table></figure>
+
+<h2 id="補充"><a href="#補充" class="headerlink" title="補充"></a>補充</h2><ul>
+<li>可以使用 pipx 建立 python 3.8 的 pipenv 執行環境 (但你需要有 python 3.8)<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipx install pipenv --python python3.8</span><br></pre></td></tr></table></figure></li>
+</ul>
+<h2 id="pipx-的好處"><a href="#pipx-的好處" class="headerlink" title="pipx 的好處"></a>pipx 的好處</h2><ol>
+<li>容量使用的較少</li>
+<li>不需要使用切換虛擬環境的指令, 可以直接指定執行的版本<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pipx run --python python3.9 pycowsay mooo</span><br></pre></td></tr></table></figure></li>
+</ol>
+<h2 id="結論"><a href="#結論" class="headerlink" title="結論"></a>結論</h2><p>:::<br><strong>我怎不用 conda 就好?</strong><br>:::</p>
+<ol>
+<li>直接建立指定版本建立虛擬環境<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda create python=3.9 --prefix .venv</span><br></pre></td></tr></table></figure></li>
+<li>進入虛擬環境<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">conda activate .venv</span><br></pre></td></tr></table></figure></li>
+<li>安裝 pandas</li>
+</ol>
+<ul>
+<li>如果要像 pipx 建立隔離環境, 這個虛擬環境就只裝 pandas, 效果就和 pipx 一樣了<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">pip install pandas</span><br></pre></td></tr></table></figure></li>
+</ul>
+
+      
+    </div>
+
+    
+    
+    
+      <footer class="post-footer">
+        <div class="post-eof"></div>
+      </footer>
+  </article>
+  
+  
+  
+
+      
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
     <link itemprop="mainEntityOfPage" href="https://superto.github.io/2024/09/23/2024-9-19-blind-tasting/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
@@ -1074,7 +1167,7 @@
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git remote add upstream git@github.com:superTO/Leetcode.git</span><br></pre></td></tr></table></figure>
 <p><img src="/2021/10/19/git/2021-10-19image4.png" alt="git remote -v - git remote add upstream git@github.com:superTO/Leetcode.git 後"></p>
 </li>
-<li><p>之後使用「git pull upstream master」就可以直接對 <a href="mailto:&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#109;">&#x67;&#x69;&#x74;&#x40;&#103;&#105;&#116;&#x68;&#117;&#98;&#46;&#x63;&#x6f;&#109;</a>:superTO/Leetcode.git 的 master 這條 branch 執行 fetch + merge</p>
+<li><p>之後使用「git pull upstream master」就可以直接對 <a href="mailto:&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#x6d;">&#103;&#x69;&#x74;&#64;&#103;&#x69;&#116;&#x68;&#x75;&#x62;&#x2e;&#99;&#111;&#x6d;</a>:superTO/Leetcode.git 的 master 這條 branch 執行 fetch + merge</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">這個方法在 fork 專案後, 如果版本落差太大會使用到</span><br></pre></td></tr></table></figure></li>
 </ul>
 
@@ -1172,80 +1265,6 @@
   
   
 
-      
-  
-  
-  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-TW">
-    <link itemprop="mainEntityOfPage" href="https://superto.github.io/2021/10/18/typescript-typeGuard/">
-
-    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
-      <meta itemprop="image" content="/images/avatar.gif">
-      <meta itemprop="name" content="Adokun(superTO)">
-      <meta itemprop="description" content="">
-    </span>
-
-    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
-      <meta itemprop="name" content="Adokun notes">
-    </span>
-      <header class="post-header">
-        <h2 class="post-title" itemprop="name headline">
-          
-            <a href="/2021/10/18/typescript-typeGuard/" class="post-title-link" itemprop="url">Typescript - Type Guard</a>
-        </h2>
-
-        <div class="post-meta">
-            <span class="post-meta-item">
-              <span class="post-meta-item-icon">
-                <i class="far fa-calendar"></i>
-              </span>
-              <span class="post-meta-item-text">發表於</span>
-
-              <time title="創建時間：2021-10-18 23:32:39" itemprop="dateCreated datePublished" datetime="2021-10-18T23:32:39+08:00">2021-10-18</time>
-            </span>
-              <span class="post-meta-item">
-                <span class="post-meta-item-icon">
-                  <i class="far fa-calendar-check"></i>
-                </span>
-                <span class="post-meta-item-text">更新於</span>
-                <time title="修改時間：2024-05-21 22:23:18" itemprop="dateModified" datetime="2024-05-21T22:23:18+08:00">2024-05-21</time>
-              </span>
-
-          
-
-        </div>
-      </header>
-
-    
-    
-    
-    <div class="post-body" itemprop="articleBody">
-
-      
-          <h2 id="每次都要用as強制型別轉換"><a href="#每次都要用as強制型別轉換" class="headerlink" title="每次都要用as強制型別轉換?"></a>每次都要用as強制型別轉換?</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">enum Gender &#123;</span><br><span class="line">    MALE = &#x27;male&#x27;,</span><br><span class="line">    FEMALE = &#x27;female&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const foo = (gender = &#x27;male&#x27; as Gender) =&gt; &#123;</span><br><span class="line">    return Object.values(Gender).includes(gender);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h2 id="Sol-1-Type-Guard"><a href="#Sol-1-Type-Guard" class="headerlink" title="Sol 1 Type Guard"></a>Sol 1 Type Guard</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">enum Gender &#123;</span><br><span class="line">    MALE = &#x27;male&#x27;,</span><br><span class="line">    FEMALE = &#x27;female&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const isGender = (gender: any): gender is Gender =&gt; &#123;</span><br><span class="line">    return Object.values(Gender).includes(gender);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const foo = (gender = &#x27;male&#x27;) =&gt; &#123;</span><br><span class="line">    if(isGender(gender)) &#123;</span><br><span class="line">        // .includes(gender) // gender 的型別是Gender</span><br><span class="line">        return Object.values(Gender).includes(gender);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<ul>
-<li>額外補充 「Narrowing」</li>
-</ul>
-<h2 id="Sol-2-Generics"><a href="#Sol-2-Generics" class="headerlink" title="Sol 2 Generics"></a>Sol 2 Generics</h2><figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line">enum Gender &#123;</span><br><span class="line">    MALE = &#x27;male&#x27;,</span><br><span class="line">    FEMALE = &#x27;female&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">enum Gender_2 &#123;</span><br><span class="line">    MALE = &#x27;male&#x27;,</span><br><span class="line">    FEMALE = &#x27;female&#x27;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const mapper = &#123;</span><br><span class="line">    [Gender_2.MALE]: Gender.MALE,</span><br><span class="line">    [Gender_2.FEMALE]: Gender.FEMALE</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const createMapper = &lt;T&gt;(mapping: T) =&gt; (value: keyof T | null): T[keyof T] | undefined =&gt; &#123;</span><br><span class="line">    return value === null ? undefined : mapping[value];</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">const foo = (gender: Gender_2.MALE) =&gt; &#123;</span><br><span class="line">    const data = &#123; gender: Gender.MALE &#125;;</span><br><span class="line">    const getMapper = createMapper(mapper);</span><br><span class="line">    const trans = getMapper(gender);</span><br><span class="line">    </span><br><span class="line">    return trans === data.gender;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-<h4 id="Reference"><a href="#Reference" class="headerlink" title="Reference"></a>Reference</h4><p><a target="_blank" rel="noopener" href="https://medium.com/onedegree-tech-blog/typescript-%E4%B8%80%E4%BA%9B%E4%BB%A4%E4%BA%BA%E5%8F%88%E6%84%9B%E5%8F%88%E6%81%A8%E7%9A%84%E5%85%A7%E5%AE%B9-type-guard-narrowing-1655a9ae2a4d">Typescript 一些令人又愛又恨的內容 — Type Guard、Narrowing</a></p>
-
-      
-    </div>
-
-    
-    
-    
-      <footer class="post-footer">
-        <div class="post-eof"></div>
-      </footer>
-  </article>
-  
-  
-  
-
 
   
   <nav class="pagination">
@@ -1315,7 +1334,7 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">12</span>
+          <span class="site-state-item-count">13</span>
           <span class="site-state-item-name">文章</span>
         </a>
       </div>
@@ -1326,7 +1345,7 @@
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
-        <span class="site-state-item-count">9</span>
+        <span class="site-state-item-count">10</span>
         <span class="site-state-item-name">標籤</span></a>
       </div>
   </nav>
@@ -1353,7 +1372,7 @@
 <div class="copyright">
   
   &copy; 
-  <span itemprop="copyrightYear">2024</span>
+  <span itemprop="copyrightYear">2025</span>
   <span class="with-love">
     <i class="fa fa-heart"></i>
   </span>
